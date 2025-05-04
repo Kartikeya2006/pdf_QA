@@ -5,6 +5,11 @@ import Logo from './_components/images/logo';
 import ChatLogo from './_components/images/chat_logo';
 import { useMediaQuery } from '@react-hook/media-query';
 import UploadLogo from './_components/images/upload_logo';
+import https from 'https';
+
+const agent = new https.Agent({  
+  rejectUnauthorized: false  // Ignore SSL certificate validation
+});
 
 const Home = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -31,7 +36,7 @@ const Home = () => {
     formData.append("file", file);
     
     try {
-      const res = await axios.post("https://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/upload", formData);
+      const res = await axios.post("https://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/upload", formData, { httpsAgent: agent });
       console.log("The response in the handleUpload : ", res);
       setFilename(res.data.filename);
     } catch (error) {
@@ -53,7 +58,7 @@ const Home = () => {
     formData.append("question", question);
     
     try {
-      const res = await axios.post("https://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/ask", formData);
+      const res = await axios.post("https://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/ask", formData, { httpsAgent: agent });
       setMessages(prev => [...prev, { type: 'ai', content: res.data.answer }]);
     } catch (error) {
       console.error("Error asking question:", error);
