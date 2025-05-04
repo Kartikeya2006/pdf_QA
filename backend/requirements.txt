@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+python-multipart
+pydantic
+llama-index
+pdfplumber
+aiofiles
+python-dotenv
