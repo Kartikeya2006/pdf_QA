@@ -94,12 +94,13 @@ const Home = () => {
                   onChange={(e) => {
                     const selectedFile = e.target.files?.[0] || null;
                     setFile(selectedFile);
-                    if (selectedFile) {
-                      setTimeout(handleUpload, 100);
-                    }
+                    // if (selectedFile) {
+                    //   setTimeout(handleUpload, 100);
+                    // }
                   }}
                 />
               </label>
+              <button style={{ cursor: "pointer" }} onClick={handleUpload}>Submit</button>
             </div>
           </div>
         </div>
