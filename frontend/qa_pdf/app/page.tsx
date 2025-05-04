@@ -31,7 +31,7 @@ const Home = () => {
     formData.append("file", file);
     
     try {
-      const res = await axios.post("http://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/upload", formData);
+      const res = await axios.post("https://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/upload", formData);
       console.log("The response in the handleUpload : ", res);
       setFilename(res.data.filename);
     } catch (error) {
@@ -53,7 +53,7 @@ const Home = () => {
     formData.append("question", question);
     
     try {
-      const res = await axios.post("http://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/ask", formData);
+      const res = await axios.post("https://ec2-16-16-121-111.eu-north-1.compute.amazonaws.com:8000/ask", formData);
       setMessages(prev => [...prev, { type: 'ai', content: res.data.answer }]);
     } catch (error) {
       console.error("Error asking question:", error);
