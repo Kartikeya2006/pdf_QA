@@ -81,7 +81,7 @@ const Home = () => {
             <div className="text-sm text-gray-700 p-2">
               {file ? file.name : "No file selected"}
             </div>
-            <div>
+            <div className='flex gap-2 items-center'>
               <label className="bg-green-300 flex p-2 rounded cursor-pointer rounded-b-lg shadow-md border-green-400 font-semibold border-1 hover:bg-green-400">
                 {isSmallScreen && (
                   <div>
@@ -105,7 +105,12 @@ const Home = () => {
                   }}
                 />
               </label>
-              <button style={{ cursor: "pointer" }} onClick={handleUpload}>Submit</button>
+              <div>
+                <button 
+                  className='bg-green-300 border-1 font-semibold border-green-400 p-1 rounded-lg hover:bg-green-400 shadow-lg'
+                  style={{ cursor: "pointer" }} 
+                  onClick={handleUpload}>Submit</button>
+              </div>
             </div>
           </div>
         </div>
